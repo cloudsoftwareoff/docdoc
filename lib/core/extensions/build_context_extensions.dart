@@ -8,4 +8,6 @@ extension BuildContextExtensions on BuildContext {
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
   LinearGradient get onboardingGradient =>
       Theme.of(this).extension<OnboardingGradientThemeExtension>()!.gradient;
+
+  InputDecorationThemeData get inputFieldTheme => Theme.of(this).inputDecorationTheme;
 }

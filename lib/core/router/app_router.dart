@@ -8,22 +8,26 @@ import 'package:go_router/go_router.dart';
 class AppRouter {
   AppRouter._();
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.onboarding,
+    initialLocation:AppRoutes.onboarding,
     routes: [
       GoRoute(
         path: AppRoutes.onboarding,
+        name: AppRoutes.onboarding,
         builder: (context, state) => const OnboardingView(),
       ),
       GoRoute(
         path: AppRoutes.login,
+        name: AppRoutes.login,
         builder: (context, state) => const LoginView(),
       ),
       GoRoute(
         path: AppRoutes.signUp,
+        name: AppRoutes.signUp,
         builder: (context, state) => const SignUpView(),
       ),
       GoRoute(
         path: AppRoutes.home,
+        name: AppRoutes.home,
         builder: (context, state) =>
             const Scaffold(body: Center(child: Text("Home Screen"))),
       ),

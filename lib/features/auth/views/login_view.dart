@@ -49,7 +49,7 @@ class LoginView extends StatelessWidget {
                 BottomText(
                   messageText: "D’ont have an account yet? ",
                   clickableText: "  Sign Up.",
-                  onTextClicked: () => context.pushNamed(AppRoutes.signUp),
+                  onTextClicked: () => context.push(AppRoutes.signUp),
                 ),
                 const VerticalSpace(height: 24),
               ],

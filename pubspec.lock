@@ -549,6 +549,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.2"
+  phone_field_plus:
+    dependency: "direct main"
+    description:
+      name: phone_field_plus
+      sha256: b6838733c3e623e9e8796e826dab9e951e7c2882e53e27f5f664cb95dc3fa726
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   platform:
     dependency: transitive
     description:

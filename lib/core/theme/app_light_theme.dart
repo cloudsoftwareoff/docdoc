@@ -33,12 +33,12 @@ class AppLightThemes {
   static const ColorScheme _colorScheme = ColorScheme.light(
     primary: AppColors.mainBlue,
     secondary: AppColors.grey,
+    secondaryContainer: AppColors.lightGrey,
     surface: AppColors.moreLightGrey,
     tertiary: AppColors.blackColor,
   );
 
   // ── Elevated Button ────────────────────────────────────────────────────────
-
   static final _elevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: AppColors.mainBlue,

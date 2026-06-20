@@ -1,5 +1,6 @@
 import 'package:doctorine/core/extensions/build_context_extensions.dart';
 import 'package:doctorine/core/helpers/spaces.dart';
+import 'package:doctorine/core/widgets/custom_phone_text_field.dart';
 import 'package:doctorine/core/widgets/primary_button.dart';
 import 'package:doctorine/core/widgets/primary_text_field.dart';
 import 'package:doctorine/features/auth/views/widgets/oauth_widgets.dart';
@@ -8,6 +9,7 @@ import 'package:doctorine/features/auth/views/widgets/bottom_text.dart';
 import 'package:doctorine/features/auth/views/widgets/terms_and_conditions_text.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:phone_field_plus/phone_field_plus.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -34,7 +36,7 @@ class SignUpView extends StatelessWidget {
                 const VerticalSpace(height: 16),
                 const PrimaryTextFormField(hint: "Password", isPassword: true),
                 const VerticalSpace(height: 16),
-                const PrimaryTextFormField(hint: "Your number"),
+                const CustomPhoneTextField(hint: "Phone Number"),
                 const VerticalSpace(height: 32),
                 PrimaryButton(text: "Create Account", onPressed: () {}),
                 const VerticalSpace(height: 46),
