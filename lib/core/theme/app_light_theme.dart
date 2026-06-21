@@ -98,6 +98,8 @@ class AppLightThemes {
     labelMedium: AppStyles.textStyleSemiBold16,
     bodyMedium: AppStyles.textStyleRegular14,
     bodySmall: AppStyles.textStyleRegular12,
-    displayLarge: AppStyles.textStyleBold18
+    displayLarge: AppStyles.textStyleBold18,
+    displayMedium: AppStyles.textStyleRegular18,
+    headlineMedium: AppStyles.textStyleSemiBold18,
   );
 }

@@ -9,9 +9,13 @@ class Doctorine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      //locale: DevicePreview.locale(context),
+      //builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
-      theme: !!true ? AppLightThemes.theme : AppDarkTheme.dark,
+      themeMode: ThemeMode.light,
+      theme: AppLightThemes.theme,
+      darkTheme: AppDarkTheme.dark,
     );
   }
 }
