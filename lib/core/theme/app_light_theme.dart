@@ -101,5 +101,6 @@ class AppLightThemes {
     displayLarge: AppStyles.textStyleBold18,
     displayMedium: AppStyles.textStyleRegular18,
     headlineMedium: AppStyles.textStyleSemiBold18,
+    headlineSmall: AppStyles.textStyleMedium12,
   );
 }
