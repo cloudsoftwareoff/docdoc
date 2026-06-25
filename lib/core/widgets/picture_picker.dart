@@ -40,10 +40,10 @@ class PicturePicker extends StatelessWidget {
 
   Image _buildAssetsImage() {
     return Image.asset(
-      AppAssets.assetsImagesOnboardingDoctor,
-      fit: BoxFit.cover,
-      height: 130,
-      width: 130,
+      AppAssets.assetsImagesPlaceHolder,
+      fit: BoxFit.fill,
+      height: 150,
+      width: 150,
     );
   }
 }

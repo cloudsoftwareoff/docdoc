@@ -7,64 +7,134 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [
-          ProfileHeader(),
-          // ── rest of body goes here ──
-        ],
+    return SafeArea(
+      child: ColoredBox(
+        color: context.colorScheme.primary,
+        child: Column(
+          children: [
+            // ── Blue header with avatar overlapping white card ──
+            SizedBox(
+              height: 250,
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const ProfileViewAppBar(),
+                      PicturePicker(onPressed: () {}),
+                    ],
+                  ),
+                  // White card peeking from bottom
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 80,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(24),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // ── White scrollable area ───────────────────────────
+            Expanded(
+              child: ColoredBox(
+                color: Colors.white,
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  children: const [
+                    ProfileViewUserInfo(),
+                    SizedBox(height: 24),
+                    _ProfileTile(
+                      icon: Icons.person_outline,
+                      label: 'Full Name',
+                      value: 'Omar Ahmed',
+                    ),
+                    _ProfileTile(
+                      icon: Icons.email_outlined,
+                      label: 'Email',
+                      value: 'omarahmed14@gmail.com',
+                    ),
+                    _ProfileTile(
+                      icon: Icons.phone_outlined,
+                      label: 'Phone',
+                      value: '+20 101 234 5678',
+                    ),
+                    _ProfileTile(
+                      icon: Icons.cake_outlined,
+                      label: 'Date of Birth',
+                      value: 'Jan 1, 1995',
+                    ),
+                    _ProfileTile(
+                      icon: Icons.location_on_outlined,
+                      label: 'Location',
+                      value: 'Cairo, Egypt',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+class _ProfileTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+
+  const _ProfileTile({
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.topCenter,
-      children: [
-        // Blue bar
-        Container(
-          height: 160,
-          color: context.colorScheme.primary,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: const ProfileViewAppBar(),
-        ),
-
-        // White card
-        Positioned(
-          top: 110,
-          left: 16,
-          right: 16,
-          child: Container(
-            padding: const EdgeInsets.only(top: 56, bottom: 24),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          Container(
+            width: 40,
+            height: 40,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.06),
-                  blurRadius: 16,
-                  offset: const Offset(0, 4),
-                ),
-              ],
+              color: context.colorScheme.primary.withOpacity(0.08),
+              borderRadius: BorderRadius.circular(10),
             ),
-            child: const ProfileViewUserInfo(),
+            child: Icon(icon, color: context.colorScheme.primary, size: 20),
           ),
-        ),
-
-        // Avatar centered on the card top edge
-        Positioned(
-          top: 110 - 45, // card top - half avatar height
-          child: PicturePicker(
-            onPressed: () => debugPrint('pressed'),
+          const SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8)),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF1E293B),
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -79,8 +149,9 @@ class ProfileViewUserInfo extends StatelessWidget {
       children: [
         Text(
           'Omar Ahmed',
+          textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: FontWeight.w700,
             color: Color(0xFF1E293B),
           ),
@@ -88,7 +159,8 @@ class ProfileViewUserInfo extends StatelessWidget {
         SizedBox(height: 4),
         Text(
           'omarahmed14@gmail.com',
-          style: TextStyle(fontSize: 13, color: Color(0xFF94A3B8)),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14, color: Color(0xFF94A3B8)),
         ),
       ],
     );
@@ -100,29 +172,28 @@ class ProfileViewAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      bottom: false,
-      child: Stack(
-        alignment: Alignment.center,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: GestureDetector(
-              onTap: () => Navigator.maybePop(context),
-              child: const Icon(Icons.chevron_left, color: Colors.white, size: 28),
-            ),
-          ),
           Text(
             'Profile',
             style: context.textStyles.titleMedium?.copyWith(
-              color: context.colorScheme.surface,
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
             ),
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: GestureDetector(
-              onTap: () {},
-              child: const Icon(Icons.settings_outlined, color: Colors.white, size: 24),
+          InkWell(
+            borderRadius: BorderRadius.circular(20),
+            onTap: () {},
+            child: const Padding(
+              padding: EdgeInsets.all(4),
+              child: Icon(
+                Icons.settings_outlined,
+                color: Colors.white,
+                size: 24,
+              ),
             ),
           ),
         ],
